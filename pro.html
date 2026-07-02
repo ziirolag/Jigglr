@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jigglr — PRO</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --brand: #2f6bff;
+      --brand-2: #7a5cff;
+      --text: #151824;
+      --muted: #5f667a;
+      --bg: #f5f7fc;
+      --surface: #ffffff;
+      --border: rgba(28, 36, 58, 0.12);
+      --shadow: 0 14px 34px rgba(28, 36, 58, 0.11);
+      --radius: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --text: #edf2ff;
+        --muted: #b6bfdc;
+        --bg: #0d101a;
+        --surface: #151a28;
+        --border: rgba(194, 209, 255, 0.18);
+        --shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 10% -10%, rgba(47, 107, 255, 0.16), transparent 48%),
+        radial-gradient(circle at 100% 0%, rgba(122, 92, 255, 0.14), transparent 44%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1040px, 92vw); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 68%, transparent);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-mark { width: 30px; height: 30px; flex: 0 0 auto; }
+
+    .nav-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .app-store-btn {
+      border: 1px solid transparent;
+      padding: 0.58rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(130deg, var(--brand), var(--brand-2));
+      box-shadow: 0 10px 20px rgba(47, 107, 255, 0.3);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.app-store-btn) { display: none; }
+      .nav-inner { min-height: 66px; }
+      .app-store-btn { padding: 0.5rem 0.8rem; font-size: 0.94rem; }
+    }
+
+    main { padding: 1.3rem 0 4rem; }
+
+    .hero {
+      margin-top: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: clamp(1.3rem, 3.5vw, 2.1rem);
+      background:
+        radial-gradient(circle at 10% 15%, rgba(47, 107, 255, 0.23), transparent 42%),
+        radial-gradient(circle at 96% 8%, rgba(122, 92, 255, 0.26), transparent 42%),
+        var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 { margin: 0; font-size: clamp(1.9rem, 3.8vw, 2.8rem); line-height: 1.14; }
+    .hero p { margin: 0.7rem 0 0; color: var(--muted); font-size: 1.06rem; }
+
+    section {
+      margin-top: 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    h2 { margin: 0 0 0.75rem; font-size: 1.3rem; }
+
+    .pro-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 800px) { .pro-wrap { grid-template-columns: 1fr; } }
+
+    .checklist { margin: 0; padding-left: 1.18rem; display: grid; gap: 0.42rem; }
+
+    .price-card {
+      border: 1px solid rgba(47, 107, 255, 0.32);
+      border-radius: 14px;
+      padding: 1rem;
+      background: linear-gradient(165deg, rgba(47, 107, 255, 0.12), rgba(122, 92, 255, 0.1));
+    }
+
+    .price { font-size: 1.75rem; font-weight: 800; margin: 0.2rem 0 0.32rem; }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.8rem 0.9rem;
+      margin-bottom: 0.65rem;
+      background: color-mix(in srgb, var(--surface) 95%, transparent);
+    }
+
+    summary { cursor: pointer; font-weight: 700; }
+    details p { margin: 0.65rem 0 0; }
+
+    footer {
+      margin-top: 2.2rem;
+      border-top: 1px solid var(--border);
+      padding: 1.2rem 0 2.5rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .foot-links { display: inline-flex; gap: 0.9rem; flex-wrap: wrap; }
+    .foot-links a:hover, .nav-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Jigglr Home">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <rect x="3" y="3" width="58" height="58" rx="14" fill="url(#logoGrad)" />
+          <path fill="#fff" d="M34.3 16.8c-7.6 0-13.8 6.2-13.8 13.8v5.2c0 6.8 5.6 12.4 12.4 12.4 4.6 0 8.8-2.6 10.9-6.7l2.4-4.7c.5-1 .8-2.1.8-3.2V30c0-7.3-5.9-13.2-13.2-13.2h-.5Zm-5.7 14c0-3 2.4-5.4 5.4-5.4s5.4 2.4 5.4 5.4v2.9h-10.8v-2.9Zm17.2 20.5a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Z"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="9" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2f6bff" />
+              <stop offset="1" stop-color="#7a5cff" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Jigglr</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="features.html">Features</a>
+        <a href="pro.html">PRO</a>
+        <a href="index.html#support">Support</a>
+        <a class="app-store-btn" href="https://apps.apple.com/app/id6786781863">Get on the App Store</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Jigglr PRO</h1>
+      <p>Unlock advanced controls with a one-time purchase.</p>
+    </section>
+
+    <section>
+      <div class="pro-wrap">
+        <div>
+          <h2>What's included in PRO?</h2>
+          <ul class="checklist">
+            <li>Smart Motion — natural, varied cursor movement</li>
+            <li>Silent Mode — keeps your Mac awake without visibly moving the cursor</li>
+            <li>Automatic clicks</li>
+            <li>Auto-stop on a timer or low battery</li>
+            <li>Custom menu bar icons</li>
+          </ul>
+        </div>
+        <aside class="price-card">
+          <h2>One-time purchase</h2>
+          <p class="price">PRO Upgrade</p>
+          <p>Open the menu and click <strong>Upgrade to PRO</strong>. The purchase is handled securely by the App Store.</p>
+          <p><a class="app-store-btn" href="https://apps.apple.com/app/id6786781863">View on the App Store</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <section>
+      <h2>Purchase help</h2>
+      <details>
+        <summary>I bought PRO but it's not showing up.</summary>
+        <p>Open the upgrade window and click <strong>Restore Purchase</strong>. Make sure you're signed in to the App Store with the same Apple ID you used to buy it.</p>
+      </details>
+      <details>
+        <summary>I have a redeem code. Where do I enter it?</summary>
+        <p>Open the menu, click <strong>Upgrade to PRO</strong>, then paste your code into the <strong>Have a code?</strong> field and press <strong>Redeem</strong>.</p>
+      </details>
+    </section>
+
+    <footer>
+      <div class="foot-links">
+        <a href="features.html">Features</a>
+        <a href="pro.html">PRO</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="mailto:jigglr@goatmail.uk">Contact</a>
+        <a href="https://apps.apple.com/app/id6786781863">App Store</a>
+      </div>
+      <div>&copy; 2026 Jigglr. All rights reserved.</div>
+    </footer>
+  </main>
+</body>
+</html>

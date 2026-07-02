@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jigglr — Features</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --brand: #2f6bff;
+      --brand-2: #7a5cff;
+      --text: #151824;
+      --muted: #5f667a;
+      --bg: #f5f7fc;
+      --surface: #ffffff;
+      --border: rgba(28, 36, 58, 0.12);
+      --shadow: 0 14px 34px rgba(28, 36, 58, 0.11);
+      --radius: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --text: #edf2ff;
+        --muted: #b6bfdc;
+        --bg: #0d101a;
+        --surface: #151a28;
+        --border: rgba(194, 209, 255, 0.18);
+        --shadow: 0 18px 40px rgba(0, 0, 0, 0.42);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 10% -10%, rgba(47, 107, 255, 0.16), transparent 48%),
+        radial-gradient(circle at 100% 0%, rgba(122, 92, 255, 0.14), transparent 44%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1120px, 92vw); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 68%, transparent);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .brand-mark { width: 30px; height: 30px; flex: 0 0 auto; }
+
+    .nav-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .app-store-btn {
+      border: 1px solid transparent;
+      padding: 0.58rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(130deg, var(--brand), var(--brand-2));
+      box-shadow: 0 10px 20px rgba(47, 107, 255, 0.3);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.app-store-btn) { display: none; }
+      .nav-inner { min-height: 66px; }
+      .app-store-btn { padding: 0.5rem 0.8rem; font-size: 0.94rem; }
+    }
+
+    main { padding: 1.3rem 0 4rem; }
+
+    .hero {
+      margin-top: 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: clamp(1.3rem, 3.5vw, 2.1rem);
+      background:
+        radial-gradient(circle at 10% 15%, rgba(47, 107, 255, 0.23), transparent 42%),
+        radial-gradient(circle at 96% 8%, rgba(122, 92, 255, 0.26), transparent 42%),
+        var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 { margin: 0; font-size: clamp(1.9rem, 3.8vw, 2.8rem); line-height: 1.14; }
+    .hero p { margin: 0.7rem 0 0; color: var(--muted); font-size: 1.06rem; }
+
+    section {
+      margin-top: 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    h2 { margin: 0 0 0.75rem; font-size: 1.3rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.95rem;
+      background: color-mix(in srgb, var(--surface) 95%, transparent);
+    }
+
+    .card h3 { margin: 0 0 0.4rem; }
+    .card p { margin: 0; color: var(--muted); }
+
+    .steps { margin: 0; padding-left: 1.2rem; display: grid; gap: 0.5rem; }
+
+    kbd {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--bg) 65%, transparent);
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: 0.9em;
+    }
+
+    footer {
+      margin-top: 2.2rem;
+      border-top: 1px solid var(--border);
+      padding: 1.2rem 0 2.5rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .foot-links { display: inline-flex; gap: 0.9rem; flex-wrap: wrap; }
+    .foot-links a:hover, .nav-links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Jigglr Home">
+        <svg class="brand-mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <rect x="3" y="3" width="58" height="58" rx="14" fill="url(#logoGrad)" />
+          <path fill="#fff" d="M34.3 16.8c-7.6 0-13.8 6.2-13.8 13.8v5.2c0 6.8 5.6 12.4 12.4 12.4 4.6 0 8.8-2.6 10.9-6.7l2.4-4.7c.5-1 .8-2.1.8-3.2V30c0-7.3-5.9-13.2-13.2-13.2h-.5Zm-5.7 14c0-3 2.4-5.4 5.4-5.4s5.4 2.4 5.4 5.4v2.9h-10.8v-2.9Zm17.2 20.5a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Z"/>
+          <defs>
+            <linearGradient id="logoGrad" x1="9" y1="6" x2="58" y2="58" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#2f6bff" />
+              <stop offset="1" stop-color="#7a5cff" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Jigglr</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="features.html">Features</a>
+        <a href="pro.html">PRO</a>
+        <a href="index.html#support">Support</a>
+        <a class="app-store-btn" href="https://apps.apple.com/app/id6786781863">Get on the App Store</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Jigglr Features</h1>
+      <p>Built for focus, privacy, and quick control.</p>
+    </section>
+
+    <section>
+      <h2>Everything included</h2>
+      <div class="grid">
+        <article class="card"><h3>Menu bar first</h3><p>Everything is one click away without interrupting your workflow.</p></article>
+        <article class="card"><h3>Start anywhere</h3><p>Press <kbd>⌘⌃M</kbd> (Command + Control + M) anywhere to start or stop Jigglr without opening the menu.</p></article>
+        <article class="card"><h3>Private by default</h3><p>No analytics, no tracking, no accounts. Jigglr runs entirely on your Mac.</p></article>
+        <article class="card"><h3>Smart Motion</h3><p>Natural movement patterns help your Mac stay awake with less obvious motion.</p></article>
+        <article class="card"><h3>Battery-aware</h3><p>Auto-stop on low battery when you need to preserve charge on the go.</p></article>
+        <article class="card"><h3>Fast setup</h3><p>Enable accessibility once, pick your interval, and go.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Getting started</h2>
+      <ol class="steps">
+        <li>Click the Jigglr icon in your menu bar.</li>
+        <li>Choose how often it should move the cursor.</li>
+        <li>Press <strong>Start</strong> — or use the shortcut <kbd>⌘⌃M</kbd> to toggle it anytime.</li>
+      </ol>
+    </section>
+
+    <footer>
+      <div class="foot-links">
+        <a href="features.html">Features</a>
+        <a href="pro.html">PRO</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="mailto:jigglr@goatmail.uk">Contact</a>
+        <a href="https://apps.apple.com/app/id6786781863">App Store</a>
+      </div>
+      <div>&copy; 2026 Jigglr. All rights reserved.</div>
+    </footer>
+  </main>
+</body>
+</html>
