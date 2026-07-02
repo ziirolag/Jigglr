@@ -1,0 +1,23 @@
+name: macOS CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Debug (no signing)
+        shell: bash
+        run: |
+          echo "===> Building MouseMove Debug"
+          xcodebuild \
+            -project MouseMove.xcodeproj \
+            -scheme MouseMove \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            build
