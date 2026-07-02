@@ -128,11 +128,18 @@
       z-index: 1;
     }
     .mockup { margin: 0 auto; max-width: 460px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; text-align: left; position: relative; z-index: 2; }
-    .mockup .body { padding: 1.2rem 1.3rem 1.4rem; }
-    .row { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+    .mockup .body { padding: 0.8rem 1.1rem 0.5rem; }
+    .mock-head { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 700; padding: 0.8rem 0 0.45rem; }
+    .row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.62rem 0; border-bottom: 1px solid var(--border); }
     .row:last-child { border-bottom: 0; }
     .row .label { font-weight: 500; }
     .row .sub { font-size: 0.8rem; color: var(--muted); }
+    .row .value { font-size: 0.82rem; color: var(--muted); white-space: nowrap; }
+    .mock-badge { color: var(--brand); font-size: .7rem; font-weight: 700; margin-left: .28rem; }
+    .mock-link { color: var(--brand); font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
+    .mock-foot { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 0 0.35rem; font-size: 0.76rem; color: var(--muted); }
+    .mock-foot a { color: var(--muted); text-decoration: none; }
+    .mock-foot a:hover { color: var(--text); }
     .toggle { width: 44px; height: 26px; border-radius: 999px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); position: relative; }
     .toggle::after { content:""; position:absolute; top:3px; right:3px; width:20px; height:20px; background:#fff; border-radius:50%; box-shadow:0 1px 3px rgba(0,0,0,.3); }
     .toggle.off { background: rgba(120,120,128,0.3); }
@@ -234,9 +241,15 @@
         <div class="mockup">
           <div class="body">
             <div class="row"><div><div class="label">Jigglr</div><div class="sub">Keeping your Mac awake</div></div><div class="toggle"></div></div>
-            <div class="row"><div><div class="label">Movement interval</div><div class="sub">Every 30 seconds</div></div><div class="sub">Custom ›</div></div>
-            <div class="row"><div><div class="label">Silent Mode <span style="color:var(--brand);font-size:.75rem;font-weight:700;">PRO</span></div><div class="sub">Awake without moving the cursor</div></div><div class="toggle off"></div></div>
-            <div class="row"><div><div class="label">Launch at login</div><div class="sub">Start automatically</div></div><div class="toggle"></div></div>
+            <div class="mock-head">Timing</div>
+            <div class="row"><div class="label">Movement interval</div><div class="value">Every 30 seconds</div></div>
+            <div class="mock-head">Behavior</div>
+            <div class="row"><div class="label">Clicks <span class="mock-badge">PRO</span></div><div class="value">Off</div></div>
+            <div class="row"><div class="label">Auto-Stop <span class="mock-badge">PRO</span></div><div class="value">Never</div></div>
+            <div class="row"><div class="label">Appearance <span class="mock-badge">PRO</span></div><div class="value">Classic icon</div></div>
+            <div class="row"><div class="label">Launch at Login</div><div class="toggle off"></div></div>
+            <div class="row"><div class="label">Upgrade to PRO</div><div class="mock-link">Open App Store ›</div></div>
+            <div class="mock-foot"><span>Version 1.0</span><a href="#">Quit Jigglr</a></div>
           </div>
         </div>
       </div>
